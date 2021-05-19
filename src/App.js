@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import Linia from './components/Linia';
+import obraTeatral from './data/obraTeatral.json';
 
 function App() {
+  
+  const frases = obraTeatral.map((frase) => {
+    return <Linia key={frase} info={frase} />;
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Nivel -1</h1>
+      {frases}
     </div>
   );
 }
