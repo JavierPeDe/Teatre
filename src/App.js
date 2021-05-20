@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Cabecera from './components/Cabecera';
+import ControladorLinia from './components/ControladorLinia';
 import Linia from './components/Linia';
 import obraTeatral from './data/obraTeatral.json';
 
@@ -22,7 +23,7 @@ function App() {
   return (
     <ContenedorAPP>
       <Cabecera />
-      {frases}
+      <ControladorLinia obra={obraTeatral} />
     </ContenedorAPP>
   );
 }
