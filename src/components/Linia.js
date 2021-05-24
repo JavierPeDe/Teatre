@@ -6,13 +6,17 @@ const StyledParagraph = styled.p`
   text-align: left;
   color: #fff;
   text-align: center;
-  margin: 1rem;
+  margin: 5px;
 `;
 
 const Linia = (props) => {
   return (
     <div>
-      <StyledParagraph>{props.info}</StyledParagraph>
+      <StyledParagraph
+        style={props.id === props.count ? { background: 'pink' } : {}}
+      >
+        {props.info}
+      </StyledParagraph>
     </div>
   );
 };

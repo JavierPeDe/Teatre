@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Linia from './Linia';
+
 const ContenedorBotones = styled.div`
   display: flex;
   justify-content: center;
@@ -21,7 +22,7 @@ const BotonControlador = styled.button`
 
 const ControladorLinia = (props) => {
   const [count, setCount] = useState(0);
-
+  const [frases, setFrases] = useState();
   const decremento = () => {
     if (count > 0) {
       setCount((prevCount) => prevCount - 1);
@@ -32,6 +33,21 @@ const ControladorLinia = (props) => {
       setCount((prevCount) => prevCount + 1);
     }
   };
+  useEffect(() => {
+    
+    setFrases(
+      props.obra.map((frase) => {
+        return (
+          <Linia
+            key={frase}
+            info={frase}
+            id={props.obra.indexOf(frase)}
+            count={count}
+          />
+        );
+      })
+    );
+  }, [count])
 
   return (
     <>
@@ -39,7 +55,7 @@ const ControladorLinia = (props) => {
         <BotonControlador onClick={decremento}>Anterior</BotonControlador>
         <BotonControlador onClick={incremento}>Següent</BotonControlador>
       </ContenedorBotones>
-      <Linia info={props.obra[count]} />
+      {frases}
     </>
   );
 };
